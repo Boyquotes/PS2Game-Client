@@ -1,0 +1,153 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "CameraData2D",
+"language": "GDScript",
+"path": "res://addons/cinematic_camera/scripts/camera_data.gd"
+}, {
+"base": "Camera2D",
+"class": "CinematicCamera2D",
+"language": "GDScript",
+"path": "res://addons/cinematic_camera/scripts/cinematic_camera.gd"
+} ]
+_global_script_class_icons={
+"CameraData2D": "res://addons/cinematic_camera/icons/camera_data.svg",
+"CinematicCamera2D": "res://addons/cinematic_camera/icons/cinematic_camera.svg"
+}
+
+[application]
+
+config/name="PS2Game"
+run/main_scene="res://assets/ps2game/scenes/Test Scene.tscn"
+boot_splash/image="res://assets/ps2game/textures/ui/appicons/client/universal/icon.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0.0588235, 0.0588235, 0.0588235, 1 )
+config/icon="res://assets/ps2game/textures/ui/appicons/client/universal/icon.png"
+config/quit_on_go_back=false
+
+[debug]
+
+shapes/collision/shape_color=Color( 0.396078, 0.898039, 0.733333, 0.176471 )
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/cinematic_camera/plugin.cfg" )
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+ui_accept={
+"deadzone": 0,
+"events": [  ]
+}
+ui_select={
+"deadzone": 0,
+"events": [  ]
+}
+ui_cancel={
+"deadzone": 0,
+"events": [  ]
+}
+ui_focus_next={
+"deadzone": 0,
+"events": [  ]
+}
+ui_focus_prev={
+"deadzone": 0,
+"events": [  ]
+}
+ui_left={
+"deadzone": 0,
+"events": [  ]
+}
+ui_right={
+"deadzone": 0,
+"events": [  ]
+}
+ui_up={
+"deadzone": 0,
+"events": [  ]
+}
+ui_down={
+"deadzone": 0,
+"events": [  ]
+}
+ui_page_up={
+"deadzone": 0,
+"events": [  ]
+}
+ui_page_down={
+"deadzone": 0,
+"events": [  ]
+}
+ui_home={
+"deadzone": 0,
+"events": [  ]
+}
+ui_end={
+"deadzone": 0,
+"events": [  ]
+}
+sprint={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+crouch={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[mono]
+
+project/assembly_name="ps2game-assembly"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/filters/use_nearest_mipmap_filter=true
+environment/default_clear_color=Color( 0.196078, 0.196078, 0.196078, 1 )
+environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false

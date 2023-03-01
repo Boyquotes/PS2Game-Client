@@ -1,0 +1,275 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/ps2game/textures/ui/RoundedRectange.png" type="Texture" id=1]
+[ext_resource path="res://assets/ps2game/textures/ui/icons/Others.png" type="Texture" id=2]
+[ext_resource path="res://assets/ps2game/fonts/Poppins-Medium.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/ps2game/textures/ui/icons/Cross.png" type="Texture" id=4]
+[ext_resource path="res://assets/ps2game/textures/ui/icons/Pause.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 42, 42 )
+margin_left = 20.0
+margin_right = 20.0
+margin_top = 20.0
+margin_bottom = 20.0
+modulate_color = Color( 0.482353, 0.482353, 0.482353, 0.498039 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 42, 42 )
+margin_left = 20.0
+margin_right = 20.0
+margin_top = 20.0
+margin_bottom = 20.0
+modulate_color = Color( 0.65098, 0.65098, 0.65098, 0.509804 )
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -512.0
+margin_right = 512.0
+margin_bottom = 600.0
+
+[node name="PauseBtn" type="NinePatchRect" parent="Control"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 65.0
+margin_bottom = 65.0
+texture = ExtResource( 1 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="TextureRect" type="TextureRect" parent="Control/PauseBtn"]
+self_modulate = Color( 0.235294, 0.235294, 0.235294, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 8.0
+margin_right = -7.0
+margin_bottom = -7.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="TopBar" type="NinePatchRect" parent="Control"]
+self_modulate = Color( 0.316895, 0.316895, 0.316895, 0.501961 )
+anchor_left = 0.461
+anchor_right = 0.461
+margin_left = -382.064
+margin_top = 25.0
+margin_right = 381.936
+margin_bottom = 65.0
+texture = ExtResource( 1 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="SmthBtn" type="NinePatchRect" parent="Control"]
+self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -145.0
+margin_top = 25.0
+margin_right = -25.0
+margin_bottom = 65.0
+texture = ExtResource( 1 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="SmthBtn2" type="NinePatchRect" parent="Control/SmthBtn"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="OtherStuffBar" type="TextureProgress" parent="Control"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_top = -227.0
+margin_right = -25.0
+margin_bottom = -183.0
+value = 50.0
+rounded = true
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 1 )
+tint_under = Color( 0.501961, 0.501961, 0.501961, 0.521569 )
+tint_progress = Color( 0.835294, 0.505882, 0.239216, 1 )
+nine_patch_stretch = true
+stretch_margin_left = 20
+stretch_margin_top = 20
+stretch_margin_right = 20
+stretch_margin_bottom = 20
+
+[node name="HealthBar" type="TextureProgress" parent="Control"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_top = -158.0
+margin_right = -25.0
+margin_bottom = -114.0
+value = 50.0
+rounded = true
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 1 )
+tint_under = Color( 0.501961, 0.501961, 0.501961, 0.521569 )
+tint_progress = Color( 0.835294, 0.239216, 0.254902, 1 )
+nine_patch_stretch = true
+stretch_margin_left = 20
+stretch_margin_top = 20
+stretch_margin_right = 20
+stretch_margin_bottom = 20
+
+[node name="Inventory" type="NinePatchRect" parent="Control"]
+self_modulate = Color( 0.501961, 0.501961, 0.501961, 0.521569 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -333.0
+margin_top = -89.0
+margin_right = -25.0
+margin_bottom = -25.0
+texture = ExtResource( 1 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Slot1" type="NinePatchRect" parent="Control/Inventory"]
+modulate = Color( 1, 1, 1, 0.901961 )
+self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -301.0
+margin_top = -57.0
+margin_right = -251.0
+margin_bottom = -7.0
+texture = ExtResource( 1 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Slot2" type="NinePatchRect" parent="Control/Inventory"]
+modulate = Color( 1, 1, 1, 0.901961 )
+self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -240.0
+margin_top = -57.0
+margin_right = -190.0
+margin_bottom = -7.0
+texture = ExtResource( 1 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Slot3" type="NinePatchRect" parent="Control/Inventory"]
+modulate = Color( 1, 1, 1, 0.901961 )
+self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -179.0
+margin_top = -57.0
+margin_right = -129.0
+margin_bottom = -7.0
+texture = ExtResource( 1 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Slot4" type="NinePatchRect" parent="Control/Inventory"]
+modulate = Color( 1, 1, 1, 0.901961 )
+self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -118.0
+margin_top = -57.0
+margin_right = -68.0
+margin_bottom = -7.0
+texture = ExtResource( 1 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="OpenInvBtn" type="NinePatchRect" parent="Control/Inventory"]
+self_modulate = Color( 0.658824, 0.658824, 0.658824, 1 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -57.0
+margin_top = -57.0
+margin_right = -7.0
+margin_bottom = -7.0
+texture = ExtResource( 1 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Others" type="TextureRect" parent="Control/Inventory/OpenInvBtn"]
+self_modulate = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
+margin_right = 50.0
+margin_bottom = 50.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="WindowDialog" type="WindowDialog" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 275.0
+margin_top = 150.0
+margin_right = -299.0
+margin_bottom = -150.0
+custom_colors/title_color = Color( 1, 1, 1, 1 )
+custom_constants/close_h_ofs = 30
+custom_constants/close_v_ofs = -10
+custom_constants/title_height = -40
+custom_fonts/title_font = SubResource( 1 )
+custom_icons/close_highlight = ExtResource( 4 )
+custom_icons/close = ExtResource( 4 )
+custom_styles/panel = SubResource( 2 )
+window_title = "Inventory"
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/WindowDialog"]
+anchor_top = 0.127
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.100002
+custom_styles/panel = SubResource( 3 )

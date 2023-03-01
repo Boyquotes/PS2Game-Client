@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/ps2game/scripts/Player.cs" type="Script" id=1]
+[ext_resource path="res://assets/ps2game/textures/entities/Player.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://assets/ps2game/textures/particles/Light.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 7.4, 15.8 )
+
+[node name="Player" type="KinematicBody2D"]
+collision/safe_margin = 0.001
+script = ExtResource( 1 )
+walkSpeed = 260.0
+collider = NodePath("Collider")
+wallCheckRight = NodePath("WallCheckRight")
+wallCheckLeft = NodePath("WallCheckLeft")
+ceilingCheck = NodePath("CeilingCheck")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2( -1.19209e-07, 4.76837e-07 )
+shape = SubResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+light_mask = 2
+frames = ExtResource( 2 )
+animation = "PlayerIdle"
+playing = true
+
+[node name="WallCheckRight" type="RayCast2D" parent="."]
+position = Vector2( 0, 3 )
+enabled = true
+cast_to = Vector2( 9, 0 )
+collide_with_areas = true
+
+[node name="WallCheckLeft" type="RayCast2D" parent="."]
+position = Vector2( 0, 3 )
+enabled = true
+cast_to = Vector2( -9, 0 )
+collide_with_areas = true
+
+[node name="CeilingCheck" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, -18 )
+collide_with_areas = true
+
+[node name="Light2D" type="Light2D" parent="."]
+rotation = 3.14159
+scale = Vector2( 12, 24 )
+texture = ExtResource( 3 )
+energy = 1.25
+range_layer_min = -1
+range_layer_max = 2
+shadow_enabled = true
+shadow_filter_smooth = 28.3
