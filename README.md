@@ -23,8 +23,8 @@ More information about this project, docs and more credits coming soon.
 Copyright © 2023 Hasibix Hasib. All Rights Reserved.
 
 This program is free software: you can redistribute
-it and/or modify it under the terms of the GNU Affero
-General Public License as published by the Free Software Foundation,
+it and/or modify it under the terms of the GNU General
+Public License as published by the Free Software Foundation,
 either version 3 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
