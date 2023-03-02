@@ -2,16 +2,20 @@
 
 This repo contains the source code for PS2Game's client.
 
-PS2Game is a **p**latformer **s**andbox **2**D game. It is currently work in progress. This game is made in Godot Game Engine 4. The name "PS2Game" is just a temporary name. This name should be changed in the future.
+PS2Game is a **p**latformer **s**andbox **2**D game. It is currently work in progress. This game is made in Godot Game Engine 3.5. The name "PS2Game" is just a temporary name. This name should be changed in the future.
 
-This project is **COMPLETELY** free to use. Anyone can make use of this project for any kind of open source use, so long as said use is also under the AGPL license. For more info, consult [LICENSE.md](https://github.com/Hasibix/PS2Game/blob/master/LICENSE.md)
+This project is **COMPLETELY** free to use. Anyone can make use of this project for any kind of open source use, so long as said use is also under the GPLv3 license. For more info, consult [LICENSE.md](https://github.com/Hasibix/PS2Game-Client/blob/master/LICENSE.md)
 
 Credits:
 
 [Asterisk-ops](https://github.com/Ast3risk-ops) - License, README
+
 Evalix - Artworks
+
 Matthew - SFX
+
 [Talltale Studios](https://github.com/Talltale-Studios) - Patch9 Button
+
 [Hexagon Nico](https://github.com/HexagonNico) - Cinematic Camera 2D
 
 More information about this project, docs and more credits coming soon.
