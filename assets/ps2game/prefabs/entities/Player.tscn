@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/ps2game/scripts/Player.cs" type="Script" id=1]
-[ext_resource path="res://assets/ps2game/textures/entities/Player.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://assets/ps2game/textures/entities/Player6.png" type="Texture" id=2]
 [ext_resource path="res://assets/ps2game/textures/particles/Light.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=4]
@@ -20,11 +20,70 @@ ceilingCheck = NodePath("CeilingCheck")
 position = Vector2( -1.19209e-07, 4.76837e-07 )
 shape = SubResource( 4 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="Head" type="Polygon2D" parent="Collider"]
 light_mask = 2
-frames = ExtResource( 2 )
-animation = "PlayerIdle"
-playing = true
+position = Vector2( -4.5, -18 )
+texture = ExtResource( 2 )
+skeleton = NodePath("../../Skeleton2D")
+polygon = PoolVector2Array( 0, 10, 10, 10, 10, 2, 0, 2 )
+uv = PoolVector2Array( 0, 10, 10, 10, 10, 2, 0, 2 )
+polygons = [ PoolIntArray( 3, 0, 1, 2 ) ]
+bones = [ "Torso", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderL", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderL/ArmL", PoolRealArray( 0, 0, 0, 0 ), "Torso/Head", PoolRealArray( 1, 1, 1, 1 ), "Torso/ShoulderR", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderR/ArmR", PoolRealArray( 0, 0, 0, 0 ), "Torso/LegL", PoolRealArray( 0, 0, 0, 0 ), "Torso/LegR", PoolRealArray( 0, 0, 0, 0 ) ]
+internal_vertex_count = 4
+
+[node name="ArmL" type="Polygon2D" parent="Collider"]
+light_mask = 2
+position = Vector2( -6.5, -8 )
+texture = ExtResource( 2 )
+skeleton = NodePath("../../Skeleton2D")
+polygon = PoolVector2Array( 14, 12, 14, 0, 11, 0, 11, 12 )
+uv = PoolVector2Array( 14, 12, 14, 0, 11, 0, 11, 12 )
+polygons = [ PoolIntArray( 3, 0, 1, 2 ) ]
+bones = [ "Torso", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderL", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderL/ArmL", PoolRealArray( 1, 1, 1, 1 ), "Torso/Head", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderR", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderR/ArmR", PoolRealArray( 0, 0, 0, 0 ), "Torso/LegL", PoolRealArray( 0, 0, 0, 0 ), "Torso/LegR", PoolRealArray( 0, 0, 0, 0 ) ]
+internal_vertex_count = 4
+
+[node name="Torso" type="Polygon2D" parent="Collider"]
+light_mask = 2
+position = Vector2( -33.5, -8 )
+texture = ExtResource( 2 )
+skeleton = NodePath("../../Skeleton2D")
+polygon = PoolVector2Array( 39, 12, 39, 0, 29, 0, 29, 12 )
+uv = PoolVector2Array( 39, 12, 39, 0, 29, 0, 29, 12 )
+polygons = [ PoolIntArray( 3, 0, 1, 2 ) ]
+internal_vertex_count = 4
+
+[node name="LegL" type="Polygon2D" parent="Collider"]
+light_mask = 2
+position = Vector2( -39.5, 4 )
+texture = ExtResource( 2 )
+skeleton = NodePath("../../Skeleton2D")
+polygon = PoolVector2Array( 44, 12, 44, 0, 40, 0, 40, 12 )
+uv = PoolVector2Array( 44, 12, 44, 0, 40, 0, 40, 12 )
+polygons = [ PoolIntArray( 3, 0, 1, 2 ) ]
+bones = [ "Torso", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderL", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderL/ArmL", PoolRealArray( 0, 0, 0, 0 ), "Torso/Head", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderR", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderR/ArmR", PoolRealArray( 0, 0, 0, 0 ), "Torso/LegL", PoolRealArray( 1, 1, 1, 1 ), "Torso/LegR", PoolRealArray( 0, 0, 0, 0 ) ]
+internal_vertex_count = 4
+
+[node name="LegR" type="Polygon2D" parent="Collider"]
+light_mask = 2
+position = Vector2( -19.5, 4 )
+texture = ExtResource( 2 )
+skeleton = NodePath("../../Skeleton2D")
+polygon = PoolVector2Array( 21, 12, 21, 0, 15, 0, 15, 12 )
+uv = PoolVector2Array( 21, 12, 21, 0, 15, 0, 15, 12 )
+polygons = [ PoolIntArray( 3, 0, 1, 2 ) ]
+bones = [ "Torso", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderL", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderL/ArmL", PoolRealArray( 0, 0, 0, 0 ), "Torso/Head", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderR", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderR/ArmR", PoolRealArray( 0, 0, 0, 0 ), "Torso/LegL", PoolRealArray( 0, 0, 0, 0 ), "Torso/LegR", PoolRealArray( 1, 1, 1, 1 ) ]
+internal_vertex_count = 4
+
+[node name="ArmR" type="Polygon2D" parent="Collider"]
+light_mask = 2
+position = Vector2( -29.5, -8 )
+texture = ExtResource( 2 )
+skeleton = NodePath("../../Skeleton2D")
+polygon = PoolVector2Array( 28, 12, 28, 0, 22, 0, 22, 12 )
+uv = PoolVector2Array( 28, 12, 28, 0, 22, 0, 22, 12 )
+polygons = [ PoolIntArray( 3, 0, 1, 2 ) ]
+bones = [ "Torso", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderL", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderL/ArmL", PoolRealArray( 0, 0, 0, 0 ), "Torso/Head", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderR", PoolRealArray( 0, 0, 0, 0 ), "Torso/ShoulderR/ArmR", PoolRealArray( 1, 1, 1, 1 ), "Torso/LegL", PoolRealArray( 0, 0, 0, 0 ), "Torso/LegR", PoolRealArray( 0, 0, 0, 0 ) ]
+internal_vertex_count = 4
 
 [node name="WallCheckRight" type="RayCast2D" parent="."]
 position = Vector2( 0, 3 )
@@ -44,6 +103,7 @@ cast_to = Vector2( 0, -18 )
 collide_with_areas = true
 
 [node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 1, 0 )
 rotation = 3.14159
 scale = Vector2( 12, 24 )
 texture = ExtResource( 3 )
@@ -52,3 +112,52 @@ range_layer_min = -1
 range_layer_max = 2
 shadow_enabled = true
 shadow_filter_smooth = 28.3
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="Torso" type="Bone2D" parent="Skeleton2D"]
+position = Vector2( 1, 4 )
+rotation = -1.5708
+rest = Transform2D( -4.37114e-08, -1, 1, -4.37114e-08, 1, 4 )
+default_length = 11.0
+
+[node name="ShoulderL" type="Bone2D" parent="Skeleton2D/Torso"]
+position = Vector2( 12, 0 )
+rotation = 1.5708
+rest = Transform2D( -4.37114e-08, 1, -1, -4.37114e-08, 12, 0 )
+default_length = 5.0
+
+[node name="ArmL" type="Bone2D" parent="Skeleton2D/Torso/ShoulderL"]
+position = Vector2( 5, 0 )
+rotation = 1.5708
+rest = Transform2D( -4.37114e-08, 1, -1, -4.37114e-08, 5, 0 )
+default_length = 12.0
+
+[node name="Head" type="Bone2D" parent="Skeleton2D/Torso"]
+position = Vector2( 12, 0 )
+rest = Transform2D( 1, 0, 0, 1, 12, 0 )
+default_length = 8.0
+
+[node name="ShoulderR" type="Bone2D" parent="Skeleton2D/Torso"]
+position = Vector2( 12, 4.76837e-07 )
+rotation = -1.5708
+rest = Transform2D( -4.37114e-08, -1, 1, -4.37114e-08, 12, 4.76837e-07 )
+default_length = 5.0
+
+[node name="ArmR" type="Bone2D" parent="Skeleton2D/Torso/ShoulderR"]
+position = Vector2( 5, 0 )
+rotation = -1.5708
+rest = Transform2D( -4.37114e-08, -1, 1, -4.37114e-08, 5, 0 )
+default_length = 12.0
+
+[node name="LegL" type="Bone2D" parent="Skeleton2D/Torso"]
+position = Vector2( 0, 2 )
+rotation = 3.14159
+rest = Transform2D( -1, -8.74228e-08, 8.74228e-08, -1, 0, 2 )
+default_length = 12.0
+
+[node name="LegR" type="Bone2D" parent="Skeleton2D/Torso"]
+position = Vector2( 9.53674e-07, -2 )
+rotation = 3.14159
+rest = Transform2D( -1, -8.74228e-08, 8.74228e-08, -1, 9.53674e-07, -2 )
+default_length = 12.0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/music.ogg-707d0d8dff58e5fbc2aab51eb2425310.oggstr"
+
+[deps]
+
+source_file="res://assets/ps2game/audio/sfx/music.ogg"
+dest_files=[ "res://.import/music.ogg-707d0d8dff58e5fbc2aab51eb2425310.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

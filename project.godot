@@ -41,7 +41,7 @@ shapes/collision/shape_color=Color( 0.396078, 0.898039, 0.733333, 0.176471 )
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/cinematic_camera/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/cinematic_camera/plugin.cfg", "res://addons/ninepatchbutton/plugin.cfg" )
 
 [gui]
 

@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/walking.wav-5b93d806ae8037787a1051fc7407a12c.sample"
+
+[deps]
+
+source_file="res://assets/ps2game/audio/sfx/walking.wav"
+dest_files=[ "res://.import/walking.wav-5b93d806ae8037787a1051fc7407a12c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

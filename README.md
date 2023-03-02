@@ -9,6 +9,10 @@ This project is **COMPLETELY** free to use. Anyone can make use of this project 
 Credits:
 
 [Asterisk-ops](https://github.com/Ast3risk-ops) - License, README
+Evalix - Artworks
+Matthew - SFX
+[Talltale Studios](https://github.com/Talltale-Studios) - Patch9 Button
+[Hexagon Nico](https://github.com/HexagonNico) - Cinematic Camera 2D
 
 More information about this project, docs and more credits coming soon.
 

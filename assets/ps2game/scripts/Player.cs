@@ -95,7 +95,7 @@ public class Player : KinematicBody2D {
     }
 
     void Flip(bool IsFacingRight) {
-        GetNode<AnimatedSprite>("AnimatedSprite").FlipH = IsFacingRight;
+        
     }
 
     public void RemoveHp(float hp) {

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/walk.mp3-f65a3df48b1277f429e12ab2acefe498.mp3str"
+
+[deps]
+
+source_file="res://assets/ps2game/audio/sfx/walk.mp3"
+dest_files=[ "res://.import/walk.mp3-f65a3df48b1277f429e12ab2acefe498.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
