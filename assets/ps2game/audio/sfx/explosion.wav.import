@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/explosion.wav-78a65fe61cb656e91b24b1290e4e2fe1.sample"
+type="AudioStreamWAV"
+uid="uid://cggf7ks53wo68"
+path="res://.godot/imported/explosion.wav-78a65fe61cb656e91b24b1290e4e2fe1.sample"
 
 [deps]
 
 source_file="res://assets/ps2game/audio/sfx/explosion.wav"
-dest_files=[ "res://.import/explosion.wav-78a65fe61cb656e91b24b1290e4e2fe1.sample" ]
+dest_files=["res://.godot/imported/explosion.wav-78a65fe61cb656e91b24b1290e4e2fe1.sample"]
 
 [params]
 

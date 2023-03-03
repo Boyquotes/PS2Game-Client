@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w4fxcmxmxwvb"
-path="res://.godot/imported/terminal_block.png-080f2544a7316dc829891c9b0e2d581d.ctex"
+uid="uid://cfk43b48nhf5q"
+path="res://.godot/imported/cinematic_camera_2d.svg-8c58f5b9fa6af09d1a20484a85c5f11b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ps2game/textures/blocks/terminal_block.png"
-dest_files=["res://.godot/imported/terminal_block.png-080f2544a7316dc829891c9b0e2d581d.ctex"]
+source_file="res://addons/cinematic_camera_2d/icons/cinematic_camera_2d.svg"
+dest_files=["res://.godot/imported/cinematic_camera_2d.svg-8c58f5b9fa6af09d1a20484a85c5f11b.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

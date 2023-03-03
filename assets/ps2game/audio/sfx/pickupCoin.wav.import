@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/pickupCoin.wav-2b3af409da4736c1b71ab75aca77c54d.sample"
+type="AudioStreamWAV"
+uid="uid://gkgqkeobab0g"
+path="res://.godot/imported/pickupCoin.wav-2b3af409da4736c1b71ab75aca77c54d.sample"
 
 [deps]
 
 source_file="res://assets/ps2game/audio/sfx/pickupCoin.wav"
-dest_files=[ "res://.import/pickupCoin.wav-2b3af409da4736c1b71ab75aca77c54d.sample" ]
+dest_files=["res://.godot/imported/pickupCoin.wav-2b3af409da4736c1b71ab75aca77c54d.sample"]
 
 [params]
 

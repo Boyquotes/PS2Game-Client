@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/carIdle.wav-1a63239b35e136255427dfe3d1d68a88.sample"
+type="AudioStreamWAV"
+uid="uid://3fxdgprmxtcq"
+path="res://.godot/imported/carIdle.wav-1a63239b35e136255427dfe3d1d68a88.sample"
 
 [deps]
 
 source_file="res://assets/ps2game/audio/sfx/carIdle.wav"
-dest_files=[ "res://.import/carIdle.wav-1a63239b35e136255427dfe3d1d68a88.sample" ]
+dest_files=["res://.godot/imported/carIdle.wav-1a63239b35e136255427dfe3d1d68a88.sample"]
 
 [params]
 

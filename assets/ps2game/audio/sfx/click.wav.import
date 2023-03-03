@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/click.wav-fbfc05516acccbbd220733d234eda46e.sample"
+type="AudioStreamWAV"
+uid="uid://r1px8yl2aoq8"
+path="res://.godot/imported/click.wav-fbfc05516acccbbd220733d234eda46e.sample"
 
 [deps]
 
 source_file="res://assets/ps2game/audio/sfx/click.wav"
-dest_files=[ "res://.import/click.wav-fbfc05516acccbbd220733d234eda46e.sample" ]
+dest_files=["res://.godot/imported/click.wav-fbfc05516acccbbd220733d234eda46e.sample"]
 
 [params]
 

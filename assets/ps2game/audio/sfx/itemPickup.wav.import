@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/itemPickup.wav-b172b12c01f86e72e0946e5229adfe21.sample"
+type="AudioStreamWAV"
+uid="uid://b8p3lcpa1tgr"
+path="res://.godot/imported/itemPickup.wav-b172b12c01f86e72e0946e5229adfe21.sample"
 
 [deps]
 
 source_file="res://assets/ps2game/audio/sfx/itemPickup.wav"
-dest_files=[ "res://.import/itemPickup.wav-b172b12c01f86e72e0946e5229adfe21.sample" ]
+dest_files=["res://.godot/imported/itemPickup.wav-b172b12c01f86e72e0946e5229adfe21.sample"]
 
 [params]
 

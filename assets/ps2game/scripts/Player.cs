@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Player : KinematicBody2D {
+public partial class Player : CharacterBody2D {
     [Export] private bool airControl = true;
     [Export] private float walkSpeed = 560f;
     [Export] private float runSpeed = 760f;
@@ -26,39 +26,41 @@ public class Player : KinematicBody2D {
         colliderSize = shape.Extents;
     }
 
-    public override void _Process(float delta) {
-        isDead = currentHealth > 0;
+    public override void _Process(double delta) {
+        isDead = currentHealth < 0;
     }
     
-    public override void _PhysicsProcess(float delta) {
-        FallAndWallSlide(delta, GetNode<RayCast2D>(wallCheckRight).IsColliding() | GetNode<RayCast2D>(wallCheckLeft).IsColliding(), GetNode<RayCast2D>(ceilingCheck).IsColliding(), this.IsOnFloor());
-        Jump(Input.IsActionPressed("jump"), this.IsOnFloor());
-        WallJump(Input.IsActionPressed("jump"), GetNode<RayCast2D>(wallCheckRight).IsColliding() | GetNode<RayCast2D>(wallCheckLeft).IsColliding());
-        MoveSprintCrouch(Input.IsActionPressed("left"), Input.IsActionPressed("right"), Input.IsActionPressed("sprint"), Input.IsActionPressed("crouch"), airControl, this.IsOnFloor());
+    public override void _PhysicsProcess(double delta) {
+        if(!isDead) {
+            FallAndWallSlide((float) delta, GetNode<RayCast2D>(wallCheckRight).IsColliding() | GetNode<RayCast2D>(wallCheckLeft).IsColliding(), GetNode<RayCast2D>(ceilingCheck).IsColliding(), this.IsOnFloor());
+            Jump(Input.IsActionPressed("jump"), this.IsOnFloor());
+            WallJump(Input.IsActionPressed("jump"), GetNode<RayCast2D>(wallCheckRight).IsColliding() | GetNode<RayCast2D>(wallCheckLeft).IsColliding());
+            MoveSprintCrouch(Input.IsActionPressed("left"), Input.IsActionPressed("right"), Input.IsActionPressed("sprint"), Input.IsActionPressed("crouch"), airControl, this.IsOnFloor());
+        }
     }
 
     void MoveSprintCrouch(bool moveConditionLeft, bool moveConditionRight, bool sprintCondition, bool crouchCondition, bool airControl, bool IsOnFloor) {
         
         if(moveConditionLeft && !moveConditionRight && !sprintCondition && !crouchCondition) {
-            velocity.x = !airControl && !IsOnFloor ? -(walkSpeed / 2) : -walkSpeed;
+            velocity.X = !airControl && !IsOnFloor ? -(walkSpeed / 2) : -walkSpeed;
             Flip(true);
         } else if(!moveConditionLeft && moveConditionRight && !sprintCondition && !crouchCondition) {
-            velocity.x = !airControl && !IsOnFloor ? (walkSpeed / 2) : walkSpeed;
+            velocity.X = !airControl && !IsOnFloor ? (walkSpeed / 2) : walkSpeed;
             Flip(false);
         } else if(moveConditionLeft && !moveConditionRight && !sprintCondition && crouchCondition) {
-            velocity.x = !airControl && !IsOnFloor ? -(crouchSpeed / 2) : -crouchSpeed;
+            velocity.X = !airControl && !IsOnFloor ? -(crouchSpeed / 2) : -crouchSpeed;
             Flip(true);
         } else if(!moveConditionLeft && moveConditionRight && !sprintCondition && crouchCondition) {
-            velocity.x = !airControl && !IsOnFloor ? (crouchSpeed / 2) : crouchSpeed;
+            velocity.X = !airControl && !IsOnFloor ? (crouchSpeed / 2) : crouchSpeed;
             Flip(false);
         } else if(moveConditionLeft && !moveConditionRight && sprintCondition && !crouchCondition) {
-            velocity.x = !airControl && !IsOnFloor ? -(runSpeed / 2) : -runSpeed;
+            velocity.X = !airControl && !IsOnFloor ? -(runSpeed / 2) : -runSpeed;
             Flip(true);
         } else if(!moveConditionLeft && moveConditionRight && sprintCondition && !crouchCondition) {
-            velocity.x = !airControl && !IsOnFloor ? (runSpeed / 2) : runSpeed;
+            velocity.X = !airControl && !IsOnFloor ? (runSpeed / 2) : runSpeed;
             Flip(false);
         } else {
-            velocity.x = 0;
+            velocity.X = 0;
         }
 
         if(crouchCondition) {
@@ -72,15 +74,15 @@ public class Player : KinematicBody2D {
 
     void Jump(bool jumpCondition, bool IsOnFloor) {
         if(jumpCondition && IsOnFloor) {
-            velocity.y = -jumpForce;
+            velocity.Y = -jumpForce;
         }
     }
 
     void FallAndWallSlide(float delta, bool IsOnWall, bool IsOnCeiling, bool IsOnFloor) {
         if(IsOnWall) {
-            velocity.y += delta * (wallSlideGravity * 100f);
+            velocity.Y += delta * (wallSlideGravity * 100f);
         } else if(!IsOnFloor | IsOnCeiling) {
-            velocity.y += delta * (gravity * 100f);
+            velocity.Y += delta * (gravity * 100f);
         }
     }
 
@@ -89,7 +91,7 @@ public class Player : KinematicBody2D {
             this.canWallJump = true;
         }
         if(wallClimbJump && IsOnWall && this.canWallJump) {
-            velocity.y = -wallJumpFroce;
+            velocity.Y = -wallJumpFroce;
             this.canWallJump = false;
         }
     }
@@ -98,7 +100,7 @@ public class Player : KinematicBody2D {
         
     }
 
-    public void RemoveHp(float hp) {
+    public void RemoveHp(double hp) {
         if(hp > 0f && hp <= 100f) {
             currentHealth -= hp;
         } 
@@ -111,8 +113,8 @@ public class Player : KinematicBody2D {
     void CrouchCollider(bool IsCrouched) {
         if(IsCrouched) {
             RectangleShape2D shape = (RectangleShape2D) GetNode<CollisionShape2D>(collider).Shape;
-            shape.Extents = new Vector2(colliderSize.x, (colliderSize.y / 2));
-            GetNode<CollisionShape2D>(collider).Position = new Vector2(0, (colliderSize.y / 2));
+            shape.Extents = new Vector2(colliderSize.X, (colliderSize.Y / 2));
+            GetNode<CollisionShape2D>(collider).Position = new Vector2(0, (colliderSize.Y / 2));
         } else {
             RectangleShape2D shape = (RectangleShape2D) GetNode<CollisionShape2D>(collider).Shape;
             shape.Extents = colliderSize;

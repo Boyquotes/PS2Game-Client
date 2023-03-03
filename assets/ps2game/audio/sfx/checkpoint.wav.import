@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/checkpoint.wav-4e21d6c532ed0bf2ba19a2cb7e8f6ebd.sample"
+type="AudioStreamWAV"
+uid="uid://ccxmdcdjuhaxd"
+path="res://.godot/imported/checkpoint.wav-4e21d6c532ed0bf2ba19a2cb7e8f6ebd.sample"
 
 [deps]
 
 source_file="res://assets/ps2game/audio/sfx/checkpoint.wav"
-dest_files=[ "res://.import/checkpoint.wav-4e21d6c532ed0bf2ba19a2cb7e8f6ebd.sample" ]
+dest_files=["res://.godot/imported/checkpoint.wav-4e21d6c532ed0bf2ba19a2cb7e8f6ebd.sample"]
 
 [params]
 

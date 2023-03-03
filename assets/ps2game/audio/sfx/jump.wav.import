@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/jump.wav-cc733799511a1ce4f22990fe71d4b325.sample"
+type="AudioStreamWAV"
+uid="uid://cwoay1bx4ahv"
+path="res://.godot/imported/jump.wav-cc733799511a1ce4f22990fe71d4b325.sample"
 
 [deps]
 
 source_file="res://assets/ps2game/audio/sfx/jump.wav"
-dest_files=[ "res://.import/jump.wav-cc733799511a1ce4f22990fe71d4b325.sample" ]
+dest_files=["res://.godot/imported/jump.wav-cc733799511a1ce4f22990fe71d4b325.sample"]
 
 [params]
 

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/fallingblock.wav-69bd31bbdf7a9bc90484db374e244713.sample"
+type="AudioStreamWAV"
+uid="uid://byhbe2evempi6"
+path="res://.godot/imported/fallingblock.wav-69bd31bbdf7a9bc90484db374e244713.sample"
 
 [deps]
 
 source_file="res://assets/ps2game/audio/sfx/fallingblock.wav"
-dest_files=[ "res://.import/fallingblock.wav-69bd31bbdf7a9bc90484db374e244713.sample" ]
+dest_files=["res://.godot/imported/fallingblock.wav-69bd31bbdf7a9bc90484db374e244713.sample"]
 
 [params]
 

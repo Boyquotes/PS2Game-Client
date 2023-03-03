@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/death.wav-3236e9906720c210067a319c314222b1.sample"
+type="AudioStreamWAV"
+uid="uid://dkdgtprol8qy5"
+path="res://.godot/imported/death.wav-3236e9906720c210067a319c314222b1.sample"
 
 [deps]
 
 source_file="res://assets/ps2game/audio/sfx/death.wav"
-dest_files=[ "res://.import/death.wav-3236e9906720c210067a319c314222b1.sample" ]
+dest_files=["res://.godot/imported/death.wav-3236e9906720c210067a319c314222b1.sample"]
 
 [params]
 

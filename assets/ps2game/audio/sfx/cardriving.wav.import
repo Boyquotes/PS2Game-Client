@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/cardriving.wav-b8adeebae20d9d777c195c8f7a535259.sample"
+type="AudioStreamWAV"
+uid="uid://d4mqwqnnbkaxw"
+path="res://.godot/imported/cardriving.wav-b8adeebae20d9d777c195c8f7a535259.sample"
 
 [deps]
 
 source_file="res://assets/ps2game/audio/sfx/cardriving.wav"
-dest_files=[ "res://.import/cardriving.wav-b8adeebae20d9d777c195c8f7a535259.sample" ]
+dest_files=["res://.godot/imported/cardriving.wav-b8adeebae20d9d777c195c8f7a535259.sample"]
 
 [params]
 

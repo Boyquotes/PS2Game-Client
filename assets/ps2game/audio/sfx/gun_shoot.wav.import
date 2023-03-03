@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/gun_shoot.wav-295f331b0e2c6322e1b40606ca792e7c.sample"
+type="AudioStreamWAV"
+uid="uid://b2c0hty1srfea"
+path="res://.godot/imported/gun_shoot.wav-295f331b0e2c6322e1b40606ca792e7c.sample"
 
 [deps]
 
 source_file="res://assets/ps2game/audio/sfx/gun_shoot.wav"
-dest_files=[ "res://.import/gun_shoot.wav-295f331b0e2c6322e1b40606ca792e7c.sample" ]
+dest_files=["res://.godot/imported/gun_shoot.wav-295f331b0e2c6322e1b40606ca792e7c.sample"]
 
 [params]
 

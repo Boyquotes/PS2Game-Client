@@ -1,73 +1,51 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://dhebbilguafuc"]
 
-[ext_resource path="res://assets/ps2game/textures/ui/RoundedRectange.png" type="Texture" id=1]
-[ext_resource path="res://assets/ps2game/textures/ui/icons/Others.png" type="Texture" id=2]
-[ext_resource path="res://assets/ps2game/fonts/Poppins-Medium.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://assets/ps2game/textures/ui/icons/Cross.png" type="Texture" id=4]
-[ext_resource path="res://assets/ps2game/textures/ui/icons/Pause.png" type="Texture" id=5]
-[ext_resource path="res://addons/ninepatchbutton/custom_theme.tres" type="Theme" id=6]
-[ext_resource path="res://addons/ninepatchbutton/ninepatchbutton.gd" type="Script" id=7]
-[ext_resource path="res://assets/ps2game/audio/sfx/click.wav" type="AudioStream" id=8]
-
-[sub_resource type="DynamicFont" id=1]
-size = 18
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 3 )
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 42, 42 )
-margin_left = 20.0
-margin_right = 20.0
-margin_top = 20.0
-margin_bottom = 20.0
-modulate_color = Color( 0.482353, 0.482353, 0.482353, 0.498039 )
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 42, 42 )
-margin_left = 20.0
-margin_right = 20.0
-margin_top = 20.0
-margin_bottom = 20.0
-modulate_color = Color( 0.65098, 0.65098, 0.65098, 0.509804 )
+[ext_resource type="Texture2D" uid="uid://bcukxcnxmfesi" path="res://assets/ps2game/textures/ui/RoundedRectange.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://1ugsxnfcc1cj" path="res://assets/ps2game/textures/ui/icons/Others.png" id="2"]
+[ext_resource type="FontFile" uid="uid://vcjul0yxqvy" path="res://assets/ps2game/fonts/Poppins-Medium.ttf" id="3"]
+[ext_resource type="Texture2D" uid="uid://27wwmda2pcts" path="res://assets/ps2game/textures/ui/icons/Pause.png" id="5"]
+[ext_resource type="Theme" path="res://addons/ninepatchbutton/custom_theme.tres" id="6"]
+[ext_resource type="Script" path="res://addons/ninepatchbutton/ninepatchbutton.gd" id="7"]
+[ext_resource type="AudioStream" uid="uid://r1px8yl2aoq8" path="res://assets/ps2game/audio/sfx/click.wav" id="8"]
 
 [node name="HUD" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -512.0
-margin_right = 512.0
-margin_bottom = 600.0
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 576.0
+offset_right = -576.0
+offset_bottom = -648.0
+grow_horizontal = 2
 
 [node name="PauseBtn" type="NinePatchRect" parent="Control"]
-margin_left = 25.0
-margin_top = 25.0
-margin_right = 65.0
-margin_bottom = 65.0
-theme = ExtResource( 6 )
-texture = ExtResource( 1 )
+layout_mode = 0
+offset_left = -552.0
+offset_top = 24.0
+offset_right = -512.0
+offset_bottom = 64.0
+theme = ExtResource("6")
+texture = ExtResource("1")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
-script = ExtResource( 7 )
-normal_texture = ExtResource( 1 )
-hovered_texture = ExtResource( 1 )
-focused_texture = ExtResource( 1 )
-pressed_texture = ExtResource( 1 )
-pressed_hovered_texture = ExtResource( 1 )
-pressed_focused_texture = ExtResource( 1 )
-disabled_texture = ExtResource( 1 )
-disabled_hovered_texture = ExtResource( 1 )
-disabled_focused_texture = ExtResource( 1 )
+script = ExtResource("7")
+normal_texture = ExtResource("1")
+hovered_texture = ExtResource("1")
+focused_texture = ExtResource("1")
+pressed_texture = ExtResource("1")
+pressed_hovered_texture = ExtResource("1")
+pressed_focused_texture = ExtResource("1")
+disabled_texture = ExtResource("1")
+disabled_hovered_texture = ExtResource("1")
+disabled_focused_texture = ExtResource("1")
 hovered_volume_db = 0
 hovered_pitch_scale = 1
 focused_volume_db = 0
 focused_pitch_scale = 1
-pressed_sound = ExtResource( 8 )
+pressed_sound = ExtResource("8")
 pressed_volume_db = 0
 pressed_pitch_scale = 1
 pressed_released_volume_db = 0
@@ -84,225 +62,217 @@ disabled_focused_volume_db = 0
 disabled_focused_pitch_scale = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/PauseBtn"]
-self_modulate = Color( 0.235294, 0.235294, 0.235294, 1 )
+self_modulate = Color(0.235294, 0.235294, 0.235294, 1)
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 7.0
-margin_top = 8.0
-margin_right = -7.0
-margin_bottom = -7.0
-texture = ExtResource( 5 )
-expand = true
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5")
+expand_mode = 1
 
 [node name="TopBar" type="NinePatchRect" parent="Control"]
-self_modulate = Color( 0.316895, 0.316895, 0.316895, 0.501961 )
-anchor_left = 0.461
-anchor_right = 0.461
-margin_left = -382.064
-margin_top = 25.0
-margin_right = 381.936
-margin_bottom = 65.0
-texture = ExtResource( 1 )
+self_modulate = Color(0.316895, 0.316895, 0.316895, 0.501961)
+layout_mode = 1
+anchors_preset = -1
+offset_left = -488.0
+offset_top = 24.0
+offset_right = 400.0
+offset_bottom = 64.0
+texture = ExtResource("1")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
 [node name="SmthBtn" type="NinePatchRect" parent="Control"]
-self_modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+self_modulate = Color(0.54902, 0.54902, 0.54902, 1)
+layout_mode = 1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -145.0
-margin_top = 25.0
-margin_right = -25.0
-margin_bottom = 65.0
-texture = ExtResource( 1 )
+offset_left = 424.0
+offset_top = 24.0
+offset_right = 552.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("1")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
 [node name="SmthBtn2" type="NinePatchRect" parent="Control/SmthBtn"]
+layout_mode = 1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -40.0
-margin_bottom = 40.0
-texture = ExtResource( 1 )
+offset_left = -40.0
+offset_bottom = 40.0
+texture = ExtResource("1")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
-[node name="OtherStuffBar" type="TextureProgress" parent="Control"]
+[node name="OtherStuffBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -300.0
-margin_top = -227.0
-margin_right = -25.0
-margin_bottom = -183.0
+offset_left = 264.0
+offset_top = 424.0
+offset_right = 552.0
+offset_bottom = 464.0
+grow_horizontal = 0
+grow_vertical = 0
 value = 50.0
 rounded = true
-texture_under = ExtResource( 1 )
-texture_progress = ExtResource( 1 )
-tint_under = Color( 0.501961, 0.501961, 0.501961, 0.521569 )
-tint_progress = Color( 0.835294, 0.505882, 0.239216, 1 )
 nine_patch_stretch = true
 stretch_margin_left = 20
 stretch_margin_top = 20
 stretch_margin_right = 20
 stretch_margin_bottom = 20
+texture_under = ExtResource("1")
+texture_progress = ExtResource("1")
+tint_under = Color(0.501961, 0.501961, 0.501961, 0.521569)
+tint_progress = Color(0.835294, 0.505882, 0.239216, 1)
 
-[node name="HealthBar" type="TextureProgress" parent="Control"]
+[node name="HealthBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -300.0
-margin_top = -158.0
-margin_right = -25.0
-margin_bottom = -114.0
+offset_left = 264.0
+offset_top = 488.0
+offset_right = 552.0
+offset_bottom = 528.0
+grow_horizontal = 0
+grow_vertical = 0
 value = 50.0
 rounded = true
-texture_under = ExtResource( 1 )
-texture_progress = ExtResource( 1 )
-tint_under = Color( 0.501961, 0.501961, 0.501961, 0.521569 )
-tint_progress = Color( 0.835294, 0.239216, 0.254902, 1 )
 nine_patch_stretch = true
 stretch_margin_left = 20
 stretch_margin_top = 20
 stretch_margin_right = 20
 stretch_margin_bottom = 20
+texture_under = ExtResource("1")
+texture_progress = ExtResource("1")
+tint_under = Color(0.501961, 0.501961, 0.501961, 0.521569)
+tint_progress = Color(0.835294, 0.239216, 0.254902, 1)
 
 [node name="Inventory" type="NinePatchRect" parent="Control"]
-self_modulate = Color( 0.501961, 0.501961, 0.501961, 0.521569 )
+self_modulate = Color(0.501961, 0.501961, 0.501961, 0.521569)
+layout_mode = 1
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -333.0
-margin_top = -89.0
-margin_right = -25.0
-margin_bottom = -25.0
-texture = ExtResource( 1 )
+offset_left = 232.0
+offset_top = 552.0
+offset_right = 552.0
+offset_bottom = 624.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("1")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
 [node name="Slot1" type="NinePatchRect" parent="Control/Inventory"]
-modulate = Color( 1, 1, 1, 0.901961 )
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+modulate = Color(1, 1, 1, 0.901961)
+self_modulate = Color(0.509804, 0.509804, 0.509804, 1)
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -301.0
-margin_top = -57.0
-margin_right = -251.0
-margin_bottom = -7.0
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
 [node name="Slot2" type="NinePatchRect" parent="Control/Inventory"]
-modulate = Color( 1, 1, 1, 0.901961 )
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+modulate = Color(1, 1, 1, 0.901961)
+self_modulate = Color(0.509804, 0.509804, 0.509804, 1)
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -240.0
-margin_top = -57.0
-margin_right = -190.0
-margin_bottom = -7.0
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
 [node name="Slot3" type="NinePatchRect" parent="Control/Inventory"]
-modulate = Color( 1, 1, 1, 0.901961 )
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+modulate = Color(1, 1, 1, 0.901961)
+self_modulate = Color(0.509804, 0.509804, 0.509804, 1)
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -179.0
-margin_top = -57.0
-margin_right = -129.0
-margin_bottom = -7.0
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
 [node name="Slot4" type="NinePatchRect" parent="Control/Inventory"]
-modulate = Color( 1, 1, 1, 0.901961 )
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+modulate = Color(1, 1, 1, 0.901961)
+self_modulate = Color(0.509804, 0.509804, 0.509804, 1)
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -118.0
-margin_top = -57.0
-margin_right = -68.0
-margin_bottom = -7.0
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
 [node name="OpenInvBtn" type="NinePatchRect" parent="Control/Inventory"]
-self_modulate = Color( 0.658824, 0.658824, 0.658824, 1 )
+self_modulate = Color(0.658824, 0.658824, 0.658824, 1)
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -57.0
-margin_top = -57.0
-margin_right = -7.0
-margin_bottom = -7.0
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
 [node name="Others" type="TextureRect" parent="Control/Inventory/OpenInvBtn"]
-self_modulate = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
-margin_right = 50.0
-margin_bottom = 50.0
-texture = ExtResource( 2 )
-expand = true
+self_modulate = Color(0.0823529, 0.0823529, 0.0823529, 1)
+layout_mode = 0
+texture = ExtResource("2")
+expand_mode = 1
 stretch_mode = 6
 
-[node name="WindowDialog" type="WindowDialog" parent="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 275.0
-margin_top = 150.0
-margin_right = -299.0
-margin_bottom = -150.0
-custom_colors/title_color = Color( 1, 1, 1, 1 )
-custom_constants/close_h_ofs = 30
-custom_constants/close_v_ofs = -10
-custom_constants/title_height = -40
-custom_fonts/title_font = SubResource( 1 )
-custom_icons/close_highlight = ExtResource( 4 )
-custom_icons/close = ExtResource( 4 )
-custom_styles/panel = SubResource( 2 )
-window_title = "Inventory"
-
-[node name="PanelContainer" type="PanelContainer" parent="Control/WindowDialog"]
-anchor_top = 0.127
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -0.100002
-custom_styles/panel = SubResource( 3 )
+[node name="WindowDialog" type="Window" parent="Control"]
+disable_3d = true
+initial_position = 2
+title = "Inventory"
+size = Vector2i(550, 400)
+visible = false
+transparent = true
+popup_window = true
+theme_override_fonts/title_font = ExtResource("3")
+theme_override_font_sizes/title_font_size = 1

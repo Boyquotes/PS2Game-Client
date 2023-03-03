@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/walk.wav-8df499a31c62515e016851e09df58ad8.sample"
+type="AudioStreamWAV"
+uid="uid://bpyrpj16c76m7"
+path="res://.godot/imported/walk.wav-8df499a31c62515e016851e09df58ad8.sample"
 
 [deps]
 
 source_file="res://assets/ps2game/audio/sfx/walk.wav"
-dest_files=[ "res://.import/walk.wav-8df499a31c62515e016851e09df58ad8.sample" ]
+dest_files=["res://.godot/imported/walk.wav-8df499a31c62515e016851e09df58ad8.sample"]
 
 [params]
 

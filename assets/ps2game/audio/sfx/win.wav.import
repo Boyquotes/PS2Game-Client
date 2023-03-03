@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/win.wav-aaafe255a7635ae20333fbfbca35114a.sample"
+type="AudioStreamWAV"
+uid="uid://cmu7druktfca"
+path="res://.godot/imported/win.wav-aaafe255a7635ae20333fbfbca35114a.sample"
 
 [deps]
 
 source_file="res://assets/ps2game/audio/sfx/win.wav"
-dest_files=[ "res://.import/win.wav-aaafe255a7635ae20333fbfbca35114a.sample" ]
+dest_files=["res://.godot/imported/win.wav-aaafe255a7635ae20333fbfbca35114a.sample"]
 
 [params]
 
