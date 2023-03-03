@@ -1,17 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhebbilguafuc"]
+[gd_scene load_steps=5 format=3 uid="uid://dhebbilguafuc"]
 
 [ext_resource type="Texture2D" uid="uid://bcukxcnxmfesi" path="res://assets/ps2game/textures/ui/RoundedRectange.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://1ugsxnfcc1cj" path="res://assets/ps2game/textures/ui/icons/Others.png" id="2"]
 [ext_resource type="FontFile" uid="uid://vcjul0yxqvy" path="res://assets/ps2game/fonts/Poppins-Medium.ttf" id="3"]
 [ext_resource type="Texture2D" uid="uid://27wwmda2pcts" path="res://assets/ps2game/textures/ui/icons/Pause.png" id="5"]
-[ext_resource type="Theme" path="res://addons/ninepatchbutton/custom_theme.tres" id="6"]
-[ext_resource type="Script" path="res://addons/ninepatchbutton/ninepatchbutton.gd" id="7"]
-[ext_resource type="AudioStream" uid="uid://r1px8yl2aoq8" path="res://assets/ps2game/audio/sfx/click.wav" id="8"]
 
 [node name="HUD" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 576.0
@@ -25,41 +23,11 @@ offset_left = -552.0
 offset_top = 24.0
 offset_right = -512.0
 offset_bottom = 64.0
-theme = ExtResource("6")
 texture = ExtResource("1")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
-script = ExtResource("7")
-normal_texture = ExtResource("1")
-hovered_texture = ExtResource("1")
-focused_texture = ExtResource("1")
-pressed_texture = ExtResource("1")
-pressed_hovered_texture = ExtResource("1")
-pressed_focused_texture = ExtResource("1")
-disabled_texture = ExtResource("1")
-disabled_hovered_texture = ExtResource("1")
-disabled_focused_texture = ExtResource("1")
-hovered_volume_db = 0
-hovered_pitch_scale = 1
-focused_volume_db = 0
-focused_pitch_scale = 1
-pressed_sound = ExtResource("8")
-pressed_volume_db = 0
-pressed_pitch_scale = 1
-pressed_released_volume_db = 0
-pressed_released_pitch_scale = 1
-pressed_hovered_volume_db = 0
-pressed_hovered_pitch_scale = 1
-pressed_focused_volume_db = 0
-pressed_focused_pitch_scale = 1
-disabled_pressed_volume_db = 0
-disabled_pressed_pitch_scale = 1
-disabled_hovered_volume_db = 0
-disabled_hovered_pitch_scale = 1
-disabled_focused_volume_db = 0
-disabled_focused_pitch_scale = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/PauseBtn"]
 self_modulate = Color(0.235294, 0.235294, 0.235294, 1)
@@ -114,6 +82,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 40.0
+grow_horizontal = 0
 texture = ExtResource("1")
 patch_margin_left = 20
 patch_margin_top = 20

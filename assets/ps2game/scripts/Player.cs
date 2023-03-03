@@ -10,37 +10,37 @@ public partial class Player : CharacterBody2D {
     [Export] private float wallSlideGravity = 1f;
     [Export] private float crouchSpeed = 50f;
     [Export] private float gravity = 4.5f;
-    [Export] private NodePath collider;
-    [Export] private NodePath wallCheckRight;
-    [Export] private NodePath wallCheckLeft;
-    [Export] private NodePath ceilingCheck;
+    [Export] private CollisionShape2D collider;
+    [Export] private RayCast2D wallCheckRight;
+    [Export] private RayCast2D wallCheckLeft;
+    [Export] private RayCast2D ceilingCheck;
     [Export] private bool isDead = false;
     [Export] private float currentHealth = 100f;
 
-    private Vector2 colliderSize;
     private Vector2 velocity;
+    private Vector2 colliderSize;
     private bool canWallJump = false;
 
     public override void _Ready() {
-        RectangleShape2D shape = (RectangleShape2D) GetNode<CollisionShape2D>(collider).Shape;
-        colliderSize = shape.Extents;
+        RectangleShape2D shape = (RectangleShape2D) collider.Shape;
+        colliderSize = shape.Size;
     }
 
     public override void _Process(double delta) {
+        velocity = Velocity;
         isDead = currentHealth < 0;
     }
     
     public override void _PhysicsProcess(double delta) {
         if(!isDead) {
-            FallAndWallSlide((float) delta, GetNode<RayCast2D>(wallCheckRight).IsColliding() | GetNode<RayCast2D>(wallCheckLeft).IsColliding(), GetNode<RayCast2D>(ceilingCheck).IsColliding(), this.IsOnFloor());
+            FallAndWallSlide((float) delta, wallCheckRight.IsColliding() | wallCheckLeft.IsColliding(), ceilingCheck.IsColliding(), this.IsOnFloor());
             Jump(Input.IsActionPressed("jump"), this.IsOnFloor());
-            WallJump(Input.IsActionPressed("jump"), GetNode<RayCast2D>(wallCheckRight).IsColliding() | GetNode<RayCast2D>(wallCheckLeft).IsColliding());
+            WallJump(Input.IsActionPressed("jump"), wallCheckRight.IsColliding() | (wallCheckLeft).IsColliding());
             MoveSprintCrouch(Input.IsActionPressed("left"), Input.IsActionPressed("right"), Input.IsActionPressed("sprint"), Input.IsActionPressed("crouch"), airControl, this.IsOnFloor());
         }
     }
 
     void MoveSprintCrouch(bool moveConditionLeft, bool moveConditionRight, bool sprintCondition, bool crouchCondition, bool airControl, bool IsOnFloor) {
-        
         if(moveConditionLeft && !moveConditionRight && !sprintCondition && !crouchCondition) {
             velocity.X = !airControl && !IsOnFloor ? -(walkSpeed / 2) : -walkSpeed;
             Flip(true);
@@ -68,8 +68,8 @@ public partial class Player : CharacterBody2D {
         } else {
             CrouchCollider(false);
         }
-
-        MoveAndSlide(velocity, new Vector2(0, -1));
+        Velocity = velocity;
+        MoveAndSlide();
     }
 
     void Jump(bool jumpCondition, bool IsOnFloor) {
@@ -100,7 +100,7 @@ public partial class Player : CharacterBody2D {
         
     }
 
-    public void RemoveHp(double hp) {
+    public void RemoveHp(float hp) {
         if(hp > 0f && hp <= 100f) {
             currentHealth -= hp;
         } 
@@ -112,13 +112,13 @@ public partial class Player : CharacterBody2D {
 
     void CrouchCollider(bool IsCrouched) {
         if(IsCrouched) {
-            RectangleShape2D shape = (RectangleShape2D) GetNode<CollisionShape2D>(collider).Shape;
-            shape.Extents = new Vector2(colliderSize.X, (colliderSize.Y / 2));
-            GetNode<CollisionShape2D>(collider).Position = new Vector2(0, (colliderSize.Y / 2));
+            RectangleShape2D shape = (RectangleShape2D) collider.Shape;
+            shape.Size = new Vector2(colliderSize.X, (colliderSize.Y / 2));
+            collider.Position = new Vector2(0, (colliderSize.Y / 2));
         } else {
-            RectangleShape2D shape = (RectangleShape2D) GetNode<CollisionShape2D>(collider).Shape;
-            shape.Extents = colliderSize;
-            GetNode<CollisionShape2D>(collider).Position = new Vector2(0, 0);
+            RectangleShape2D shape = (RectangleShape2D) collider.Shape;
+            shape.Size = colliderSize;
+            collider.Position = new Vector2(0, 0);
         }
     }
 }
