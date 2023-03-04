@@ -197,27 +197,20 @@ _data = {
 "Run": ExtResource("4")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("collider", "wallCheckRight", "wallCheckLeft", "ceilingCheck")]
-motion_mode = 1
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("collider", "wallCheck", "ceilingCheck")]
 slide_on_ceiling = false
 script = ExtResource("1")
 walkSpeed = 260.0
 collider = NodePath("Collider")
-wallCheckRight = NodePath("WallCheckRight")
-wallCheckLeft = NodePath("WallCheckLeft")
+wallCheck = NodePath("WallCheck")
 ceilingCheck = NodePath("CeilingCheck")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(-1.19209e-07, 4.76837e-07)
 shape = SubResource("4")
 
-[node name="WallCheckRight" type="RayCast2D" parent="."]
+[node name="WallCheck" type="RayCast2D" parent="."]
 target_position = Vector2(10, 0)
-collide_with_areas = true
-
-[node name="WallCheckLeft" type="RayCast2D" parent="."]
-target_position = Vector2(-10, 0)
-collide_with_areas = true
 
 [node name="CeilingCheck" type="RayCast2D" parent="."]
 target_position = Vector2(0, -18)
@@ -262,7 +255,6 @@ bone_angle = 0.0
 [node name="ArmL" type="Bone2D" parent="Skeleton2D/Torso/ShoulderL"]
 position = Vector2(5, 0)
 rotation = 1.5708
-scale = Vector2(1, 1)
 rest = Transform2D(-4.37114e-08, 1, -1, -4.37114e-08, 5, 0)
 auto_calculate_length_and_angle = false
 length = 12.0
@@ -279,7 +271,7 @@ region_rect = Rect2(11, 0, 3, 12)
 
 [node name="LegL" type="Bone2D" parent="Skeleton2D/Torso"]
 position = Vector2(0, 2)
-rotation = 3.14159
+rotation = -3.14159
 rest = Transform2D(-1, -1.50996e-07, 1.50996e-07, -1, 0, 2)
 auto_calculate_length_and_angle = false
 length = 12.0
@@ -321,8 +313,7 @@ region_rect = Rect2(0, 2, 10, 8)
 
 [node name="LegR" type="Bone2D" parent="Skeleton2D/Torso"]
 position = Vector2(0, -2)
-rotation = 3.14159
-scale = Vector2(1, 1)
+rotation = -3.14159
 rest = Transform2D(-1, -8.74228e-08, 8.74228e-08, -1, 0, -2)
 auto_calculate_length_and_angle = false
 length = 12.0
@@ -348,7 +339,6 @@ bone_angle = 0.0
 [node name="ArmR" type="Bone2D" parent="Skeleton2D/Torso/ShoulderR"]
 position = Vector2(5, 0)
 rotation = -1.5708
-scale = Vector2(1, 1)
 rest = Transform2D(7.54979e-08, -1, 1, 7.54979e-08, 5, 0)
 auto_calculate_length_and_angle = false
 length = 12.0

@@ -130,7 +130,7 @@ layer_0/tile_data = PackedInt32Array(-3866637, 0, 0, -3866636, 1, 0, -3866635, 2
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(126, -67)
-continuous_cd = 2
+mass = 0.01
 
 [node name="RoundedRectange" type="Sprite2D" parent="RigidBody2D"]
 texture = ExtResource("13")

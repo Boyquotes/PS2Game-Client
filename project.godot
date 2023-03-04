@@ -30,7 +30,7 @@ project/assembly_name="PS2Game-Assembly"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/cinematic_camera_2d/plugin.cfg")
+enabled=PackedStringArray()
 
 [gui]
 
