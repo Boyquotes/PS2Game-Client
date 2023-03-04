@@ -16,10 +16,10 @@ public partial class Player : CharacterBody2D {
     [Export] private bool isDead = false;
     [Export] private float currentHealth = 100f;
 
+    private bool isFacingRight = true;
     private Vector2 velocity;
     private Vector2 colliderSize;
     private bool canWallJump = false;
-    private bool wasFlipped = false;
 
     public override void _Ready() {
         RectangleShape2D shape = (RectangleShape2D) collider.Shape;
@@ -28,10 +28,6 @@ public partial class Player : CharacterBody2D {
 
     public override void _Process(double delta) {
         isDead = currentHealth < 0;
-        if(!wasFlipped) {
-            this.Scale = new Vector2(this.Scale.X == -1 ? 1 : -1, this.Scale.Y);
-            wasFlipped = true;
-        }
     }
     
     public override void _PhysicsProcess(double delta) {
@@ -88,24 +84,18 @@ public partial class Player : CharacterBody2D {
     }
 
     void MoveSprintCrouch(bool moveConditionLeft, bool moveConditionRight, bool sprintCondition, bool crouchCondition, bool airControl, bool IsOnFloor) {
-        if(moveConditionLeft && !moveConditionRight && !sprintCondition && !crouchCondition) {
-            velocity.X = !airControl && !IsOnFloor ? -(walkSpeed / 2) : -walkSpeed;
-            Flip(true);
-        } else if(!moveConditionLeft && moveConditionRight && !sprintCondition && !crouchCondition) {
-            velocity.X = !airControl && !IsOnFloor ? (walkSpeed / 2) : walkSpeed;
-            Flip(false);
-        } else if(moveConditionLeft && !moveConditionRight && !sprintCondition && crouchCondition) {
-            velocity.X = !airControl && !IsOnFloor ? -(crouchSpeed / 2) : -crouchSpeed;
-            Flip(true);
-        } else if(!moveConditionLeft && moveConditionRight && !sprintCondition && crouchCondition) {
-            velocity.X = !airControl && !IsOnFloor ? (crouchSpeed / 2) : crouchSpeed;
-            Flip(false);
-        } else if(moveConditionLeft && !moveConditionRight && sprintCondition && !crouchCondition) {
-            velocity.X = !airControl && !IsOnFloor ? -(runSpeed / 2) : -runSpeed;
-            Flip(true);
-        } else if(!moveConditionLeft && moveConditionRight && sprintCondition && !crouchCondition) {
-            velocity.X = !airControl && !IsOnFloor ? (runSpeed / 2) : runSpeed;
-            Flip(false);
+        if(GetAxis(moveConditionRight, moveConditionLeft, 1) > 0 && !isFacingRight) {
+            Flip();
+        } else if(GetAxis(moveConditionRight, moveConditionLeft, 1) < 0 && isFacingRight) {
+            Flip();
+        }
+
+        if(!sprintCondition && !crouchCondition) {
+            velocity.X = !airControl && !IsOnFloor ? (GetAxis(moveConditionRight, moveConditionLeft, walkSpeed) / 2) : GetAxis(moveConditionRight, moveConditionLeft, walkSpeed);
+        } else if(sprintCondition && !crouchCondition) {
+            velocity.X = !airControl && !IsOnFloor ? (GetAxis(moveConditionRight, moveConditionLeft, runSpeed) / 2) : GetAxis(moveConditionRight, moveConditionLeft, runSpeed);
+        } else if(!sprintCondition && crouchCondition) {
+            velocity.X = !airControl && !IsOnFloor ? (GetAxis(moveConditionRight, moveConditionLeft, crouchSpeed) / 2) : GetAxis(moveConditionRight, moveConditionLeft, crouchSpeed);
         } else {
             velocity.X = 0;
         }
@@ -117,16 +107,24 @@ public partial class Player : CharacterBody2D {
         }
     }
 
-    void Flip(bool IsFacingRight) {
-        if(IsFacingRight && this.Scale.X == -1) {
-            wasFlipped = false;
-        } else if(!IsFacingRight && this.Scale.X == 1) {
-            wasFlipped = false;
-        } else if(!IsFacingRight && this.Scale.X == -1) {
-            wasFlipped = true;
-        } else if(IsFacingRight && this.Scale.X == 1) {
-            wasFlipped = true;
+    void Flip() {
+        isFacingRight = !isFacingRight;
+        Vector2 scale = this.Scale;
+        scale.X *= -1;
+        this.Scale = scale;
+    }
+
+    float GetAxis(bool positive, bool negative, float speed) {
+        float axis;
+        if(positive) {
+            axis = speed;
+        } else if(negative) {
+            axis = -speed;
+        } else {
+            axis = 0;
         }
+
+        return axis;
     }
 
     public void RemoveHp(float hp) {
