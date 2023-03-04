@@ -2,17 +2,23 @@ using Godot;
 using System;
 
 public partial class Player : CharacterBody2D {
+    [ExportCategory("Player")]
+    [ExportGroup("Movement")]
     [Export] private bool airControl = true;
     [Export] private float walkSpeed = 560f;
     [Export] private float runSpeed = 760f;
     [Export] private float jumpForce = 250f;
     [Export] private float wallJumpFroce = 150f;
-    [Export] private float wallSlideGravity = 1f;
     [Export] private float crouchSpeed = 50f;
+    
+    [ExportGroup("Physics")]
+    [Export] private float wallSlideGravity = 1f;
     [Export] private float gravity = 4.5f;
     [Export] private CollisionShape2D collider;
     [Export] private RayCast2D wallCheck;
     [Export] private RayCast2D ceilingCheck;
+
+    [ExportGroup("Health")]
     [Export] private bool isDead = false;
     [Export] private float currentHealth = 100f;
 
