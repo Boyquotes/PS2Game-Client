@@ -1,0 +1,10 @@
+name: Test macos workflow
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Test
+        run: echo "Hello from macosX"
