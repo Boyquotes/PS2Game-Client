@@ -8,7 +8,7 @@ This project is **COMPLETELY** free to use. Anyone can make use of this project 
 
 Credits:
 
-[Asterisk-ops](https://github.com/Ast3risk-ops) - License, README
+[Ast3risk-ops](https://github.com/Ast3risk-ops) - License, README
 
 Evalix - Artworks
 
