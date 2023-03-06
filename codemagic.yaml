@@ -56,7 +56,7 @@ workflows:
                   echo "Setting up Godot" &&
                   brew install --cask godot &&
                   echo "Preparing export templates" &&
-                  curl https://github.com/ziyaddin/xampp/archive/master.zip -L -o MyFilename.zip
+                  curl ${GODOT_TEMPLATES_URL} -L -o godot-templates.zip
                   unzip ./godot-templates.zip &&
                   mv templates ${GODOT_VERSION}.stable
                   mkdir -p "${GODOT_TEMPLATES_DIR}" &&
