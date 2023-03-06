@@ -39,8 +39,8 @@ workflows:
                   echo "Setting up Oracle OpenJDK" &&
                   brew install --cask oracle-jdk &&
                   echo "Setting up Android SDK" &&
-                  brew install gradle
-                  brew install --cask android-commandlinetools
+                  brew install gradle &&
+                  brew install --cask android-commandlinetools &&
                   sdkmanager --install "platform-tools"
                   "platforms;android-23"
                   "platforms;android-24"
