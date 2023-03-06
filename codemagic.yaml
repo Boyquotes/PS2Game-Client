@@ -6,8 +6,8 @@ workflows:
           - godot
         vars:
           GODOT_VERSION: "4.0"
-          GODOT_TEMPLATES_URL: "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz"
-          GODOT_TEMPLATES_DIR: "/Users/builder/Library/Application Support/Godot/templates"
+          GODOT_TEMPLATES_URL: "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable.mono/Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz"
+          GODOT_TEMPLATES_DIR: "/Users/builder/Library/Application Support/Godot/export_templates"
           GODOT_EXEC: "Godot.app/Contents/MacOS/Godot"
           ARTIFACT_LX64: "ps2game-${GAME_VERSION}-linux-x86_64"
           ARTIFACT_LX32: "ps2game-${GAME_VERSION}-linux-x86_32"
@@ -56,11 +56,11 @@ workflows:
                   echo "Setting up Godot" &&
                   brew install --cask godot &&
                   echo "Preparing export templates" &&
-                  curl ${GODOT_TEMPLATES_URL} -L -o godot-templates.zip
+                  curl ${GODOT_TEMPLATES_URL} -L -o godot-templates.zip &&
                   unzip ./godot-templates.zip &&
-                  mv templates ${GODOT_VERSION}.stable
+                  mv templates ${GODOT_VERSION}.stable.mono &&
                   mkdir -p "${GODOT_TEMPLATES_DIR}" &&
-                  mv ${GODOT_VERSION}.stable "${GODOT_TEMPLATES_DIR}/" &&
+                  mv ${GODOT_VERSION}.stable.mono "${GODOT_TEMPLATES_DIR}/" &&
                   echo "Preparing export presets" &&
                   mkdir builds/ &&
                   echo ${GODOT_EXPORT_PRESETS} | base64 --decode > ./export_presets.cfg &&
