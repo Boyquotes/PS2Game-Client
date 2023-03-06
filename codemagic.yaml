@@ -54,7 +54,7 @@ workflows:
                   "platforms;android-33"
                   "build-tools;29.0.2" &&
                   echo "Setting up Godot" &&
-                  brew install --cask godot
+                  brew install --cask godot &&
                   echo "Preparing export templates" &&
                   unzip ./godot-templates.zip &&
                   mkdir -p "${GODOT_TEMPLATES_DIR}" &&
