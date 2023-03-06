@@ -56,8 +56,8 @@ workflows:
                   echo "Setting up Godot" &&
                   wget https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_macos.universal.zip &&
                   unzip Godot_v${GODOT_VERSION}-stable_macos.universal.zip &&
-                  mv ./Godot.app /Applications
-                  rm Godot_v${GODOT_VERSION}-stable_macos.universal.zip
+                  mv ./Godot.app /Applications &&
+                  rm Godot_v${GODOT_VERSION}-stable_macos.universal.zip &&
                   echo "Preparing export templates" &&
                   wget ${GODOT_TEMPLATES_URL} &&
                   mv ./Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz ./godot-templates.zip &&
