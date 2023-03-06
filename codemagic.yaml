@@ -25,7 +25,7 @@ workflows:
           ARTIFACT_AU: "ps2game-${GAME_VERSION}-android.apk"
           ARTIFACT_HU: "ps2game-${GAME_VERSION}-html5.html"
       scripts:
-        - name: Prepare to export
+        - name: Preparing to export
           script: >
                   echo "Setting up HomeBrew" &&
                   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" &&
@@ -56,7 +56,8 @@ workflows:
                   echo "Setting up Godot" &&
                   brew install --cask godot &&
                   echo "Preparing export templates" &&
-                  curl ${GODOT_TEMPLATES_URL} -L -o godot-templates.zip &&
+                  wget ${GODOT_TEMPLATES_URL} &&
+                  mv ./Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz ./godot-templates.zip &&
                   unzip ./godot-templates.zip &&
                   mv templates ${GODOT_VERSION}.stable.mono &&
                   mkdir -p "${GODOT_TEMPLATES_DIR}" &&
