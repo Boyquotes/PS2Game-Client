@@ -66,7 +66,7 @@ workflows:
                   mkdir builds/ &&
                   echo ${GODOT_EXPORT_PRESETS} | base64 --decode > ./export_presets.cfg &&
                   echo "Success!" &&
-                  cp "/Users/builder/Library/Application Support/Godot/editor_settings-4.tres" ./
+                  cp "/Users/builder/Library/Application Support/Godot/" ./
 
       artifacts:
-        - editor_settings-4.tres
+        - Godot
