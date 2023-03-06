@@ -6,7 +6,7 @@ workflows:
           - godot
         vars:
           GODOT_VERSION: "4.0"
-          GODOT_TEMPLATES_URL: "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable.mono/Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz"
+          GODOT_TEMPLATES_URL: "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz"
           GODOT_TEMPLATES_DIR: "/Users/builder/Library/Application Support/Godot/export_templates"
           GODOT_EXEC: "Godot.app/Contents/MacOS/Godot"
           ARTIFACT_LX64: "ps2game-${GAME_VERSION}-linux-x86_64"
