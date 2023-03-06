@@ -1,0 +1,125 @@
+workflows:
+  godot-mac-workflow:
+      name: Build and Upload
+      environment:
+        groups:
+          - godot
+        vars:
+          GODOT_VERSION: "4.0"
+          GODOT_EXEC_URL: "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_macos.universal.zip"
+          GODOT_TEMPLATES_URL: "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz"
+          GODOT_TEMPLATES_DIR: "/Users/builder/Library/Application Support/Godot/templates"
+          GODOT_EXEC: "Godot.app/Contents/MacOS/Godot"
+          GAME_VERSION: "v1.0s1"
+          ARTIFACT_LX64: "ps2game-${GAME_VERSION}-linux-x86_64"
+          ARTIFACT_LX32: "ps2game-${GAME_VERSION}-linux-x86_32"
+          ARTIFACT_LA64: "ps2game-${GAME_VERSION}-linux-arm64"
+          ARTIFACT_LA32: "ps2game-${GAME_VERSION}-linux-arm32"
+          ARTIFACT_MU: "ps2game-${GAME_VERSION}-mac.dmg"
+          ARTIFACT_WX64: "ps2game-${GAME_VERSION}-windows-X86_64.exe"
+          ARTIFACT_WX32: "ps2game-${GAME_VERSION}-windows-X86_32.exe"
+          ARTIFACT_WA64: "ps2game-${GAME_VERSION}-windows-arm64.exe"
+          ARTIFACT_UX64: "ps2game-${GAME_VERSION}-uwp-X86_64.appx"
+          ARTIFACT_UX32: "ps2game-${GAME_VERSION}-uwp-X86_32.appx"
+          ARTIFACT_UA32: "ps2game-${GAME_VERSION}-uwp-arm32.appx"
+          ARTIFACT_IA64: "ps2game-${GAME_VERSION}-ios-arm64.ipa"
+          ARTIFACT_IA32: "ps2game-${GAME_VERSION}-ios.ipa"
+          ARTIFACT_AU: "ps2game-${GAME_VERSION}-android.apk"
+          ARTIFACT_HU: "ps2game-${GAME_VERSION}-html5.html"
+      scripts:
+        - name: Prepare to export
+          script: >
+                  echo "Setting up HomeBrew" &&
+                  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" &&
+                  echo "Setting up Mono" &&
+                  brew install python@3.11 &&
+                  brew install cmake &&
+                  brew install mono &&
+                  echo "Setting up DotNET SDK" &&
+                  brew install --cask dotnet-sdk &&
+                  echo "Setting up Android SDK" &&
+                  wget $(echo ANDROID_SDK_TOOLS_URL)$(echo ANDROID_SDK_TOOLS_FILE_NAME) &&
+                  mkdir android &&
+                  cd android &&
+                  mv ../$(echo ANDROID_SDK_TOOLS_FILE_NAME) ./ &&
+                  unzip $(echo ANDROID_SDK_TOOLS_FILE_NAME) &&
+                  rm $(echo ANDROID_SDK_TOOLS_FILE_NAME) &&
+                  cd cmdline-tools &&
+                  ./sdkmanager --install "platform-tools"
+                  "platforms;android-23"
+                  "platforms;android-24"
+                  "platforms;android-25"
+                  "platforms;android-26"
+                  "platforms;android-27"
+                  "platforms;android-28"
+                  "platforms;android-29"
+                  "platforms;android-30"
+                  "platforms;android-31"
+                  "platforms;android-32"
+                  "platforms;android-33"
+                  "build-tools;29.0.2" &&
+                  mkdir tools &&
+                  mv -i * tools &&
+                  cd ../../.. &&
+                  export ANDROID_HOME=$(pwd)/android &&
+                  export PATH=$ANDROID_HOME/cmdline-tools/tools/bin/:$PATH &&
+                  export PATH=$ANDROID_HOME/emulator/:$PATH &&
+                  export PATH=$ANDROID_HOME/platform-tools/:$PATH &&
+                  echo "Success!" &&
+                  echo "Setting up Godot" &&
+                  curl -o ./godot.zip ${GODOT_EXEC_URL} &&
+                  unzip ./godot.zip &&
+                  curl -o ./godot-templates.zip ${GODOT_TEMPLATES_URL} &&
+                  unzip ./godot-templates.zip &&
+                  mkdir -p "${GODOT_TEMPLATES_DIR}" &&
+                  mv templates "${GODOT_TEMPLATES_DIR}/${GODOT_VERSION}.stable"
+                  echo "Preparing export presets" &&
+                  mkdir builds/ &&
+                  echo ${GODOT_EXPORT_PRESETS} | base64 --decode > ./export_presets.cfg &&
+                  echo "Success!"
+
+        - name: Export for Linux
+          script: >
+                  ${GODOT_EXEC} --path . --no-window --export "LX64" builds/lx64/${ARTIFACT_LX64} &&
+                  ${GODOT_EXEC} --path . --no-window --export "LX32" builds/lx32/${ARTIFACT_LX32} &&
+                  ${GODOT_EXEC} --path . --no-window --export "LA64" builds/la64/${ARTIFACT_LA64} &&
+                  ${GODOT_EXEC} --path . --no-window --export "LA32" builds/la32/${ARTIFACT_LA32} &&
+                  echo "Success!"
+
+        - name: Export for MacOS
+          script: >
+                  ${GODOT_EXEC} --path . --no-window --export "MU" builds/mu/${ARTIFACT_MU} &&
+                  echo "Success!"
+
+        - name: Export for Windows
+          script: >
+                  ${GODOT_EXEC} --path . --no-window --export "WX64" builds/wx64/${ARTIFACT_WX64} &&
+                  ${GODOT_EXEC} --path . --no-window --export "WX32" builds/wx32/${ARTIFACT_WX32} &&
+                  ${GODOT_EXEC} --path . --no-window --export "WA64" builds/wa64/${ARTIFACT_WA64} &&
+                  echo "Success!"
+
+        - name: Export for Universal Windows Platform
+          script: >
+                  ${GODOT_EXEC} --path . --no-window --export "UX64" builds/ux64/${ARTIFACT_UX64} &&
+                  ${GODOT_EXEC} --path . --no-window --export "UX32" builds/ux32/${ARTIFACT_UX32} &&
+                  ${GODOT_EXEC} --path . --no-window --export "UA32" builds/ua32/${ARTIFACT_UA32} &&
+                  echo "Success!"
+
+        - name: Export for iOS
+          script: >
+                  ${GODOT_EXEC} --path . --no-window --export "IA64" builds/ia64/${ARTIFACT_IA64} &&
+                  ${GODOT_EXEC} --path . --no-window --export "IA32" builds/ia32/${ARTIFACT_IA32} &&
+                  echo "Success!"
+
+        - name: Export for Android
+          script: >
+                  ${GODOT_EXEC} --path . --no-window --export "AU" builds/au/${ARTIFACT_AU} &&
+                  echo "Success!"
+
+        - name: Export for HTML5
+          script: >
+                  ${GODOT_EXEC} --path . --no-window --export "HU" builds/hu/${ARTIFACT_HU} &&
+                  echo "Success!"
+
+      artifacts:
+        - builds
