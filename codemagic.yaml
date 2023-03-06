@@ -39,14 +39,9 @@ workflows:
                   echo "Setting up Oracle OpenJDK" &&
                   brew install --cask oracle-jdk &&
                   echo "Setting up Android SDK" &&
-                  curl -o ./android_sdk_tools.zip https://dl.google.com/android/repository/commandlinetools-mac-${ANDROID_SDK_TOOLS_BUILD_NUM}_latest.zip &&
-                  mkdir android &&
-                  cd android &&
-                  mv ../android_sdk_tools.zip ./ &&
-                  unzip android_sdk_tools.zip &&
-                  rm android_sdk_tools.zip &&
-                  cd cmdline-tools/bin &&
-                  ./sdkmanager --install "platform-tools"
+                  brew install gradle
+                  brew install --cask android-commandlinetools
+                  sdkmanager --install "platform-tools"
                   "platforms;android-23"
                   "platforms;android-24"
                   "platforms;android-25"
@@ -59,13 +54,6 @@ workflows:
                   "platforms;android-32"
                   "platforms;android-33"
                   "build-tools;29.0.2" &&
-                  mkdir tools &&
-                  mv -i * tools &&
-                  cd ../../.. &&
-                  export ANDROID_HOME=$(pwd)/android &&
-                  export PATH=$ANDROID_HOME/cmdline-tools/tools/bin/:$PATH &&
-                  export PATH=$ANDROID_HOME/emulator/:$PATH &&
-                  export PATH=$ANDROID_HOME/platform-tools/:$PATH &&
                   echo "Setting up Godot" &&
                   curl -o ./godot.zip ${GODOT_EXEC_URL} &&
                   unzip ./godot.zip &&
