@@ -8,7 +8,7 @@ workflows:
           GODOT_VERSION: "4.0"
           GODOT_TEMPLATES_URL: "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz"
           GODOT_TEMPLATES_DIR: "/Users/builder/Library/Application Support/Godot/export_templates"
-          GODOT_EXEC: "Godot.app/Contents/MacOS/Godot"
+          GODOT_EXEC: "/Applications/Godot.app/Contents/MacOS/Godot"
           ARTIFACT_LX64: "ps2game-${GAME_VERSION}-linux-x86_64"
           ARTIFACT_LX32: "ps2game-${GAME_VERSION}-linux-x86_32"
           ARTIFACT_LA64: "ps2game-${GAME_VERSION}-linux-arm64"
@@ -54,7 +54,10 @@ workflows:
                   "platforms;android-33"
                   "build-tools;29.0.2" &&
                   echo "Setting up Godot" &&
-                  brew install --cask godot &&
+                  wget https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_macos.universal.zip &&
+                  unzip Godot_v${GODOT_VERSION}-stable_macos.universal.zip &&
+                  mv ./Godot.app /Applications
+                  rm Godot_v${GODOT_VERSION}-stable_macos.universal.zip
                   echo "Preparing export templates" &&
                   wget ${GODOT_TEMPLATES_URL} &&
                   mv ./Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz ./godot-templates.zip &&
@@ -68,5 +71,6 @@ workflows:
                   echo "Success!" &&
                   cd /Users/builder/Library/Application Support/ &&
                   zip -r /Users/builder/clone/Godot.zip Godot/
+                  cd /Users/builder/clone/
       artifacts:
         - Godot
