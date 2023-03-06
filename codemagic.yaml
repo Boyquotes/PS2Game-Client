@@ -70,7 +70,7 @@ workflows:
                   echo ${GODOT_EXPORT_PRESETS} | base64 --decode > ./export_presets.cfg &&
                   echo "Success!" &&
                   cd /Users/builder/Library/Application Support/ &&
-                  zip -r /Users/builder/clone/Godot.zip Godot/
+                  zip -r /Users/builder/clone/Godot.zip Godot/ &&
                   cd /Users/builder/clone/
       artifacts:
         - Godot
