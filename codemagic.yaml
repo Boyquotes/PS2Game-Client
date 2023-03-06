@@ -10,7 +10,6 @@ workflows:
           GODOT_TEMPLATES_URL: "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz"
           GODOT_TEMPLATES_DIR: "/Users/builder/Library/Application Support/Godot/templates"
           GODOT_EXEC: "Godot.app/Contents/MacOS/Godot"
-          GAME_VERSION: "v1.0s1"
           ARTIFACT_LX64: "ps2game-${GAME_VERSION}-linux-x86_64"
           ARTIFACT_LX32: "ps2game-${GAME_VERSION}-linux-x86_32"
           ARTIFACT_LA64: "ps2game-${GAME_VERSION}-linux-arm64"
@@ -37,13 +36,15 @@ workflows:
                   brew install mono &&
                   echo "Setting up DotNET SDK" &&
                   brew install --cask dotnet-sdk &&
+                  echo "Setting up Oracle OpenJDK" &&
+                  brew install --cask oracle-jdk
                   echo "Setting up Android SDK" &&
-                  wget $(echo ANDROID_SDK_TOOLS_URL)$(echo ANDROID_SDK_TOOLS_FILE_NAME) &&
+                  curl -o ./android_sdk_tools.zip https://dl.google.com/android/repository/commandlinetools-mac-${ANDROID_SDK_TOOLS_BUILD_NUM}_latest.zip &&
                   mkdir android &&
                   cd android &&
-                  mv ../$(echo ANDROID_SDK_TOOLS_FILE_NAME) ./ &&
-                  unzip $(echo ANDROID_SDK_TOOLS_FILE_NAME) &&
-                  rm $(echo ANDROID_SDK_TOOLS_FILE_NAME) &&
+                  mv ../android_sdk_tools.zip ./ &&
+                  unzip android_sdk_tools.zip &&
+                  rm android_sdk_tools.zip &&
                   cd cmdline-tools &&
                   ./sdkmanager --install "platform-tools"
                   "platforms;android-23"
@@ -65,7 +66,6 @@ workflows:
                   export PATH=$ANDROID_HOME/cmdline-tools/tools/bin/:$PATH &&
                   export PATH=$ANDROID_HOME/emulator/:$PATH &&
                   export PATH=$ANDROID_HOME/platform-tools/:$PATH &&
-                  echo "Success!" &&
                   echo "Setting up Godot" &&
                   curl -o ./godot.zip ${GODOT_EXEC_URL} &&
                   unzip ./godot.zip &&
