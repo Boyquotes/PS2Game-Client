@@ -45,7 +45,7 @@ workflows:
                   mv ../android_sdk_tools.zip ./ &&
                   unzip android_sdk_tools.zip &&
                   rm android_sdk_tools.zip &&
-                  cd cmdline-tools &&
+                  cd cmdline-tools/bin &&
                   ./sdkmanager --install "platform-tools"
                   "platforms;android-23"
                   "platforms;android-24"
