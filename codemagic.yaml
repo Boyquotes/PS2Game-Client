@@ -6,7 +6,6 @@ workflows:
           - godot
         vars:
           GODOT_VERSION: "4.0"
-          GODOT_EXEC_URL: "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_macos.universal.zip"
           GODOT_TEMPLATES_URL: "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz"
           GODOT_TEMPLATES_DIR: "/Users/builder/Library/Application Support/Godot/templates"
           GODOT_EXEC: "Godot.app/Contents/MacOS/Godot"
