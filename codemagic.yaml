@@ -37,7 +37,7 @@ workflows:
                   echo "Setting up DotNET SDK" &&
                   brew install --cask dotnet-sdk &&
                   echo "Setting up Oracle OpenJDK" &&
-                  brew install --cask oracle-jdk
+                  brew install --cask oracle-jdk &&
                   echo "Setting up Android SDK" &&
                   curl -o ./android_sdk_tools.zip https://dl.google.com/android/repository/commandlinetools-mac-${ANDROID_SDK_TOOLS_BUILD_NUM}_latest.zip &&
                   mkdir android &&
@@ -76,7 +76,7 @@ workflows:
                   echo "Preparing export presets" &&
                   mkdir builds/ &&
                   echo ${GODOT_EXPORT_PRESETS} | base64 --decode > ./export_presets.cfg &&
-                  echo "Success!"
+                  echo "Success!" &&
                   cp "/Users/builder/Library/Application Support/Godot/editor_settings-4.tres" ./
 
       artifacts:
