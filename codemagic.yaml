@@ -55,12 +55,11 @@ workflows:
                   "platforms;android-33"
                   "build-tools;29.0.2" &&
                   echo "Setting up Godot" &&
-                  curl -o ./godot.zip ${GODOT_EXEC_URL} &&
-                  unzip ./godot.zip &&
-                  curl -o ./godot-templates.zip ${GODOT_TEMPLATES_URL} &&
+                  brew install --cask godot
+                  echo "Preparing export templates" &&
                   unzip ./godot-templates.zip &&
                   mkdir -p "${GODOT_TEMPLATES_DIR}" &&
-                  mv templates "${GODOT_TEMPLATES_DIR}/${GODOT_VERSION}.stable"
+                  mv templates "${GODOT_TEMPLATES_DIR}/${GODOT_VERSION}.stable" &&
                   echo "Preparing export presets" &&
                   mkdir builds/ &&
                   echo ${GODOT_EXPORT_PRESETS} | base64 --decode > ./export_presets.cfg &&
