@@ -46,9 +46,13 @@ texture = ExtResource("5")
 expand_mode = 1
 
 [node name="TopBar" type="NinePatchRect" parent="Control"]
-self_modulate = Color(0.316895, 0.316895, 0.316895, 0.501961)
+self_modulate = Color(0, 0, 0, 0.196078)
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.009
+anchor_top = 0.143
+anchor_right = 0.991
+anchor_bottom = 0.857
 offset_left = -488.0
 offset_top = 24.0
 offset_right = 400.0
@@ -59,7 +63,8 @@ patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
-[node name="SmthBtn" type="NinePatchRect" parent="Control"]
+[node name="GameModeSwitch" type="NinePatchRect" parent="Control"]
+visible = false
 self_modulate = Color(0.54902, 0.54902, 0.54902, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -76,19 +81,29 @@ patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
-[node name="SmthBtn2" type="NinePatchRect" parent="Control/SmthBtn"]
+[node name="Grabber" type="NinePatchRect" parent="Control/GameModeSwitch"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.687
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+anchor_bottom = 1.0
+offset_left = -3.936
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
 grow_horizontal = 0
 texture = ExtResource("1")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
+
+[node name="CheckButton" type="CheckButton" parent="Control"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 32.0
+offset_right = 508.0
+offset_bottom = 56.0
 
 [node name="OtherStuffBar" type="TextureProgressBar" parent="Control"]
 layout_mode = 1

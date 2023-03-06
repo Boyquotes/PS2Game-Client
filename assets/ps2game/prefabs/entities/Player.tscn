@@ -199,6 +199,9 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("collider", "wallCheck", "ceilingCheck")]
 slide_on_ceiling = false
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_block_on_wall = false
 script = ExtResource("1")
 walkSpeed = 260.0
 collider = NodePath("Collider")
@@ -208,6 +211,7 @@ ceilingCheck = NodePath("CeilingCheck")
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(-1.19209e-07, 4.76837e-07)
 shape = SubResource("4")
+debug_color = Color(0.333333, 0.360784, 0.847059, 0.576471)
 
 [node name="WallCheck" type="RayCast2D" parent="."]
 target_position = Vector2(10, 0)
