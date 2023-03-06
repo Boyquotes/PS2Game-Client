@@ -62,6 +62,7 @@ workflows:
                   wget ${GODOT_TEMPLATES_URL} &&
                   mv ./Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz ./godot-templates.zip &&
                   unzip ./godot-templates.zip &&
+                  rm ./godot-templates.zip &&
                   mv templates ${GODOT_VERSION}.stable.mono &&
                   mkdir -p "${GODOT_TEMPLATES_DIR}" &&
                   mv ${GODOT_VERSION}.stable.mono "${GODOT_TEMPLATES_DIR}/" &&
@@ -73,4 +74,4 @@ workflows:
                   zip -r /Users/builder/clone/Godot.zip Godot/ &&
                   cd /Users/builder/clone/
       artifacts:
-        - Godot
+        - Godot.zip
