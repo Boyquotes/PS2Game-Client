@@ -1,0 +1,139 @@
+name: Build and Release
+
+on: workflow_dispatch
+
+env:
+  GAME_VERSION: "v1.0s1"
+  ANDROID_SDK_TOOLS_URL: "https://dl.google.com/android/repository/"
+  ANDROID_SDK_TOOLS_FILE_NAME: "commandlinetools-mac-9477386_latest.zip"
+  
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3.3.0
+      with:
+        lfs: true
+    
+    - name: Install XCode
+      uses: maxim-lobanov/setup-xcode@v1.5.1
+      with:
+        xcode-version: latest-stable
+    
+    - name: Install brew
+      run: >
+           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    - name: Install build tools
+      run: >
+           echo "Installing Mono" &&
+           brew install python@3.11 &&
+           brew install cmake &&
+           brew install mono &&
+           echo "Installing DotNET SDK" &&
+           brew install --cask dotnet-sdk &&
+           echo "Installing Android SDK" &&
+           wget $(echo ANDROID_SDK_TOOLS_URL)$(echo ANDROID_SDK_TOOLS_FILE_NAME) &&
+           mkdir android &&
+           cd android &&
+           mv ../$(echo ANDROID_SDK_TOOLS_FILE_NAME) ./ &&
+           unzip $(echo ANDROID_SDK_TOOLS_FILE_NAME) &&
+           rm $(echo ANDROID_SDK_TOOLS_FILE_NAME) &&
+           cd cmdline-tools &&
+           ./sdkmanager --install "platform-tools"
+           "platforms;android-23"
+           "platforms;android-24"
+           "platforms;android-25"
+           "platforms;android-26"
+           "platforms;android-27"
+           "platforms;android-28"
+           "platforms;android-29"
+           "platforms;android-30"
+           "platforms;android-31"
+           "platforms;android-32"
+           "platforms;android-33"
+           "build-tools;29.0.2" &&
+           mkdir tools &&
+           mv -i * tools &&
+           cd ../../.. &&
+           export ANDROID_HOME=$(pwd)/android &&
+           export PATH=$ANDROID_HOME/cmdline-tools/tools/bin/:$PATH &&
+           export PATH=$ANDROID_HOME/emulator/:$PATH &&
+           export PATH=$ANDROID_HOME/platform-tools/:$PATH &&
+           echo "Success!"
+
+    - name: Install Godot 4
+      run: >
+           brew install --cask godot-mono &&
+           echo "Success!"
+
+    - name: Export project (Windows)
+      run: >
+           godot --export "Win x86_64" ./builds/windows-x86_64/ps2game-client-$(echo GAME_VERSION)-windows-x86_64.exe &&
+           godot --export "Win x86_32" ./builds/windows-x86_32/ps2game-client-$(echo GAME_VERSION)-windows-x86_32.exe &&
+           godot --export "Win arm64" ./builds/windows-arm64/ps2game-client-$(echo GAME_VERSION)-windows-arm64.exe &&
+           echo "Success!"
+
+    - name: Export project (Linux)
+      run: >
+           godot --export "Linux x86_64" ./builds/linux-x86_64/ps2game-client-$(echo GAME_VERSION)-linux-x86_64 &&
+           godot --export "Linux x86_32" ./builds/linux-x86_32/ps2game-client-$(echo GAME_VERSION)-linux-x86_32 &&
+           godot --export "Linux arm64" ./builds/linux-arm64/ps2game-client-$(echo GAME_VERSION)-linux-arm64 &&
+           godot --export "Linux arm32" ./builds/linux-arm32/ps2game-client-$(echo GAME_VERSION)-linux-arm32 &&
+           echo "Success!"
+
+    - name: Export project (MacOS)
+      run: >
+           godot --export "MacOS" ./builds/mac/ps2game-client-$(echo GAME_VERSION)-macos.dmg &&
+           echo "Success!"
+
+    - name: Export project (Android)
+      run: >
+           godot --export "Android" ./builds/android/ps2game-client-$(echo GAME_VERSION)-android.apk &&
+           echo "Success!"
+
+    - name: Export project (HTML5)
+      run: >
+           godot --export "HTML5" ./builds/html5/ps2game-client-$(echo GAME_VERSION)-html5.html &&
+           echo "Success!"
+
+    - name: Export project (IOS)
+      run: >
+           godot --export "IOS arm64" ./builds/ios-arm64/ps2game-client-$(echo GAME_VERSION)-ios-arm64.ipa &&
+           godot --export "IOS" ./builds/ios/ps2game-client-$(echo GAME_VERSION)-ios.ipa &&
+           echo "Success!"
+    
+    - name: Prepare to release
+      run: >
+           brew install git &&
+           brew install ghr &&
+           export GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} &&
+           cd builds &&
+           mkdir out &&
+           cd out &&
+           echo "Preparing to release artifacts for 'Windows'" &&
+           zip -vr ps2game-client-$(echo GAME_VERSION)-windows-x86_64.zip ../windows-x86_64/ -x "*.DS_Store" &&
+           zip -vr ps2game-client-$(echo GAME_VERSION)-windows-x86_32.zip ../windows-x86_32/ -x "*.DS_Store" &&
+           zip -vr ps2game-client-$(echo GAME_VERSION)-windows-arm64.zip ../windows-arm64/ -x "*.DS_Store" &&
+           echo "Preparing to release artifacts for 'Linux'" &&
+           zip -vr ps2game-client-$(echo GAME_VERSION)-linux-x86_64.zip ../linux-x86_64/ -x "*.DS_Store" &&
+           zip -vr ps2game-client-$(echo GAME_VERSION)-linux-x86_32.zip ../linux-x86_32/ -x "*.DS_Store" &&
+           zip -vr ps2game-client-$(echo GAME_VERSION)-linux-arm64.zip ../linux-arm64/ -x "*.DS_Store" &&
+           zip -vr ps2game-client-$(echo GAME_VERSION)-linux-arm32.zip ../linux-arm32/ -x "*.DS_Store" &&
+           echo "Preparing to release artifacts for 'MacOS'" &&
+           cp ../macos/ps2game-client-$(echo GAME_VERSION)-macos.dmg ./
+           echo "Preparing to release artifacts for 'IOS'" &&
+           cp ../ios-arm64/ps2game-client-$(echo GAME_VERSION)-ios-arm64.ipa ./ &&
+           cp ../ios/ps2game-client-$(echo GAME_VERSION)-ios.ipa ./ &&
+           echo "Preparing to release artifacts for 'HTML5'" &&
+           zip -vr ps2game-client-$(echo GAME_VERSION)-html5.zip ../html5/ -x "*.DS_Store" &&
+           echo "Preparing to release artifacts for 'Android'" &&
+           cp ../android/ps2game-client-$(echo GAME_VERSION)-android.apk ./ &&
+           echo "Success!" &&
+           cd ../..
+    - name: Release artifacts
+      uses: actions/upload-artifact@v3.1.2
+      with:
+        name: "PS2Game $GAME_VERSION Pack All Platforms"
+        path: "builds/*"
