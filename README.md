@@ -17,9 +17,8 @@ Matthew - SFX
 More information about this project, docs and more credits coming soon.
 
 ---------------------------------------------------
-
-### License info
 <big><pre>
+-----BEGIN LICENSE BLOCK-----
 Copyright © 2023 Hasibix Hasib. All Rights Reserved.
 
 This program is free software: you can redistribute
@@ -33,4 +32,5 @@ or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License f
 
 You should have received a copy of the GNU Affero General Public License
 along with this program. If not, see https://www.gnu.org/licenses.
+-----END LICENSE BLOCK-----
 </pre></big>
